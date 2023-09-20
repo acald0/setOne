@@ -6,15 +6,15 @@
 */
 
 // CODE HERE
-
+const multiply = (number1, number2, callback) => callback(number1 * number2)
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// multiply(4, 3, answer => {
-//   console.log('The answer is ' + answer) //should console.log 12
-// })
+multiply(4, 3, answer => {
+  console.log('The answer is ' + answer) //should console.log 12
+})
 
 
 
@@ -36,15 +36,15 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE 
-
+const first = (array, callback) => callback(array[0])
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// first(names, firstName => {
-//   console.log('The first name in names is ' + firstName)
-// })
+first(names, firstName => {
+  console.log('The first name in names is ' + firstName)
+})
 
 
 
@@ -56,15 +56,16 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE
+const last = (array, callback) => callback(array[array.length - 1])
 
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// last(names, lastName => {
-//   console.log('The last name in names is ' + lastName)
-// })
+last(names, lastName => {
+  console.log('The last name in names is ' + lastName)
+})
 
 
 
@@ -78,19 +79,26 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE 
+const contains = (array, name, callback) => {
+  if(array.includes(name)) {
+    callback(true)
+  } else {
+    callback(false)
+  }
+}
 
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// contains(names, 'Colt', result => {
-//   if(result === true){
-//     console.log('Colt is in the array')
-//   } else {
-//     console.log('Colt is not in the array')
-//   }
-// })
+contains(names, 'Colt', result => {
+  if(result === true){
+    console.log('Colt is in the array')
+  } else {
+    console.log('Colt is not in the array')
+  }
+})
 
 
 
@@ -102,7 +110,19 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
   Hint: you can use a nested for loop to do this.
 */
 
+var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
+
 // CODE HERE
+const uniq = (array, callback) => {
+  for(let i = 0; i < array.length; i++) {
+    for(let j = i + 1; j < array.length; j++) {
+      if(array[i] === array[j]) {
+        array.splice(j, 1)
+      }
+    }
+  }
+  callback(array)
+}
 
 /*
   Invoke the uniq function, passing in the names array from above and a callback function.
@@ -112,7 +132,7 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE
-
+uniq(names, (uniqArr) => console.log(`The new names array with all the duplicate items removed is ${uniqArr}.`))
 
 
 ////////// PROBLEM 6 //////////
@@ -123,7 +143,12 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE 
-
+const each = (array, callback) => {
+  for(let i = 0; i < array.length; i ++) {
+    let name = array[i]
+    callback(name, i)
+  }
+}
 
 /*
   Invoke the each function, passing in the names array and a callback function.
@@ -134,6 +159,7 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 
 // CODE HERE
 
+each(names, (item, index) => console.log(`The item at index ${index} is ${item}.`))
 
 
 
@@ -241,6 +267,6 @@ var users = [
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-getUserById(users, '16t', user => {
-  console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address) 
-})
+// getUserById(users, '16t', user => {
+//   console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address) 
+// })
